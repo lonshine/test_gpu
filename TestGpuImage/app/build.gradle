@@ -21,4 +21,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //滤镜
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
+
+    compile 'com.jakewharton:butterknife:6.1.0'
 }

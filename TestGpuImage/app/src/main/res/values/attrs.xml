@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CheckableView">
+        <attr name="cv_ischecked" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="GpuImgRadioButton">
+        <attr name="grb_selected_tag" format="reference" />
+        <attr name="grb_filter_name" format="string|reference" />
+        <attr name="grb_filter_mode">
+            <flag name="unfilter" value="0x00" />
+            <flag name="contrast" value="0x01" />
+            <flag name="invert" value="0x02" />
+            <flag name="pixelation" value="0x03" />
+            <flag name="hue" value="0x04" />
+            <flag name="gamma" value="0x05" />
+            <flag name="brightness" value="0x06" />
+            <flag name="sepia" value="0x07" />
+            <flag name="grayscale" value="0x08" />
+            <flag name="sharpness" value="0x09" />
+            <flag name="lookup" value="0x20" />
+            <flag name="custom" value="0x21" />
+        </attr>
+    </declare-styleable>
+</resources>

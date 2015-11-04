@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:cv="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
+        android:id="@+id/ivTest"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        />
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioGroup
+                android:id="@+id/crgTest"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    cv:cv_ischecked="true"
+                    cv:grb_filter_mode="unfilter"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="contrast"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="invert"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn5"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="pixelation"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn6"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="hue"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn7"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="gamma"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn8"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="brightness"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn9"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="sepia"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn10"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="grayscale"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn11"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="sharpness"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn12"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="lookup"
+                    />
+
+                <com.lonshine.test.gpuimage.widget.GpuImgSurfaceRadioButton
+                    android:id="@+id/girBtn13"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cvTest"
+                    cv:cv_ischecked="false"
+                    cv:grb_filter_mode="custom"
+                    />
+
+            </com.lonshine.test.gpuimage.widget.GpuImgRadioGroup>
+
+
+        </HorizontalScrollView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
