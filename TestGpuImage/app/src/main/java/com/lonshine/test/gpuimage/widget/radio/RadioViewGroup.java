@@ -1,4 +1,4 @@
-package com.lonshine.test.gpuimage.widget.radio;
+package cn.app.meiya.test.gpuimage.widget.radio;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -78,6 +78,13 @@ public class RadioViewGroup extends LinearLayout {
             mOnCheckedChangeListener.onCheckedChanged(this, mCheckedId);
         }
     }
+
+
+    public void checkedChild(int id) {
+        findRadioViewById(id).setChecked(true);
+    }
+
+
 
     private void setCheckedStateForView(int viewId, boolean checked) {
         View checkedView = findViewById(viewId);

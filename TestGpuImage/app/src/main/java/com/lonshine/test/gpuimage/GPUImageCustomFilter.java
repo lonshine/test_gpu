@@ -1,4 +1,4 @@
-package com.lonshine.test.gpuimage;
+package cn.app.meiya.test.gpuimage;
 
 import android.content.Context;
 import android.graphics.Bitmap;

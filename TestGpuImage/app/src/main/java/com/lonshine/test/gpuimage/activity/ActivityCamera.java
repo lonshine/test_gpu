@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lonshine.test.gpuimage.activity;
+package cn.app.meiya.test.gpuimage.activity;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -32,9 +32,7 @@ import android.view.View.OnClickListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-import com.lonshine.test.gpuimage.GPUImageFilterTools;
-import com.lonshine.test.gpuimage.R;
-import com.lonshine.test.gpuimage.utils.CameraHelper;
+import com.meiyaapp.meiya.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,6 +41,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import cn.app.meiya.test.gpuimage.GPUImageFilterTools;
+import cn.app.meiya.test.gpuimage.utils.CameraHelper;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImage.OnPictureSavedListener;
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;

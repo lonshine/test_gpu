@@ -1,10 +1,12 @@
-package com.lonshine.test.gpuimage.utils;
+package cn.app.meiya.test.gpuimage.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+
+import java.io.File;
 
 /**
  * Created by lonshine on 15/10/10 下午3:38.
@@ -38,6 +40,18 @@ public class UriUtils {
             }
         }
         return data;
+    }
+
+
+
+    public static Uri getUri(String path){
+        Uri uri = null;
+        if(!path.startsWith("content://") && new File(path).exists()){
+            uri = Uri.fromFile(new File(path));
+        }else{
+            uri = Uri.parse(path);
+        }
+        return uri;
     }
 
 

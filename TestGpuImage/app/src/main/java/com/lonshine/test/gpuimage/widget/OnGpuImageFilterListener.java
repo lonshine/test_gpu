@@ -1,10 +1,11 @@
-package com.lonshine.test.gpuimage.widget;
+package cn.app.meiya.test.gpuimage.widget;
 
-import android.net.Uri;
+import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 
 /**
  * Created by lonshine on 15/11/2 下午5:03.
  */
 public interface OnGpuImageFilterListener {
-    public void onFillterChanged(Uri uri);
+    public void onFillterChanged(GPUImageFilter filter);
+    public void onProgressChanged(int progress);
 }

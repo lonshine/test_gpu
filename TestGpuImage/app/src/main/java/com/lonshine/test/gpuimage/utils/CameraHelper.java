@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lonshine.test.gpuimage.utils;
+package cn.app.meiya.test.gpuimage.utils;
 
 import android.app.Activity;
 import android.content.Context;

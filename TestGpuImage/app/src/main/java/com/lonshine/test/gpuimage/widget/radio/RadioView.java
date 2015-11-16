@@ -1,4 +1,4 @@
-package com.lonshine.test.gpuimage.widget.radio;
+package cn.app.meiya.test.gpuimage.widget.radio;
 
 import android.content.Context;
 import android.util.AttributeSet;

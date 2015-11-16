@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package com.lonshine.test.gpuimage.activity;
+package cn.app.meiya.test.gpuimage.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
-import com.lonshine.test.gpuimage.GPUImageFilterTools;
-import com.lonshine.test.gpuimage.R;
+import com.meiyaapp.meiya.R;
 
+import cn.app.meiya.aa.util.Loger;
+import cn.app.meiya.test.gpuimage.GPUImageFilterTools;
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageView;
 import jp.co.cyberagent.android.gpuimage.GPUImageView.OnPictureSavedListener;
@@ -138,7 +138,7 @@ public class ActivityGallery extends Activity implements OnSeekBarChangeListener
     }
 
     private void handleImage(final Uri selectedImage) {
-        Log.d("GpuImg - ActivityGallery - select:" ,selectedImage + "");
+        Loger.d("GpuImg - ActivityGallery - select:" + selectedImage);
         mGPUImageView.setImage(selectedImage);
     }
 }

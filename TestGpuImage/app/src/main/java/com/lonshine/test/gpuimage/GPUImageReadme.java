@@ -1,4 +1,4 @@
-package com.lonshine.test.gpuimage;
+package cn.app.meiya.test.gpuimage;
 
 /**
  * 滤镜效果参数相关的头文件说明，暂时备份

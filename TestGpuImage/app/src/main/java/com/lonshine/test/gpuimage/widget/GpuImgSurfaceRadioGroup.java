@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
 
-import cn.app.meiya.test.gpuimage.utils.GpuHelper;
 import cn.app.meiya.test.gpuimage.widget.radio.RadioView;
 import cn.app.meiya.test.gpuimage.widget.radio.RadioViewGroup;
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
@@ -15,24 +14,24 @@ import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 /**
  * Created by lonshine on 15/10/8 下午6:01.
  */
-public class GpuImgRadioGroup extends RadioViewGroup {
-    public GpuImgRadioGroup(Context context) {
+public class GpuImgSurfaceRadioGroup extends RadioViewGroup {
+    public GpuImgSurfaceRadioGroup(Context context) {
         super(context);
         initGirg();
     }
 
 
-    public GpuImgRadioGroup(Context context, AttributeSet attrs) {
+    public GpuImgSurfaceRadioGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         initGirg();
     }
 
-    public GpuImgRadioGroup(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GpuImgSurfaceRadioGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initGirg();
     }
 
-    public GpuImgRadioGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public GpuImgSurfaceRadioGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initGirg();
     }
@@ -68,7 +67,7 @@ public class GpuImgRadioGroup extends RadioViewGroup {
         initSettingDialog(activity,dialogHeight);
 
         //删除之前的缓存图片
-        GpuHelper.get().cleanGpuCache(activity);
+//        cleanGpuCache();
 
         setChildViewImage(uri);
     }
@@ -106,12 +105,13 @@ public class GpuImgRadioGroup extends RadioViewGroup {
 
     /**
      * 滤镜转换完成，当前选中Item为该滤镜时才通知外界更新.此方法由容器内的child发起调用。
+     * @param uri
      */
-    public void childGpuImageFillterCompleted(boolean isChecked,GPUImageFilter filter){
-        if(isChecked){
-            gpuImgFilterChanged(filter);
-        }
-    }
+//    public void childGpuImageFillterCompleted(Uri uri, boolean isChecked,GPUImageFilter filter){
+//        if(isChecked){
+//            gpuImgFilterChanged(filter,uri);
+//        }
+//    }
 
 
     /**
@@ -125,6 +125,20 @@ public class GpuImgRadioGroup extends RadioViewGroup {
             throw  new Exception("GpuImgRadioGroup : acitivity is null.");
         }
     }
+
+
+    /**
+     * 删除滤镜缓存
+     */
+//    private void cleanGpuCache() {
+//        File picPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+//        File file = new File(picPath, GpuImgRadioButton.CACHE_DIR_NAME);
+//        try {
+//            FileUtil.deleteDirectory(file);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     private OnGpuImageFilterListener mOnGpuImageFilterListener;
@@ -156,8 +170,12 @@ public class GpuImgRadioGroup extends RadioViewGroup {
             @Override
             public void onCheckedChanged(RadioViewGroup group, int checkedId) {
                 RadioView radioView = findRadioViewById(checkedId);
-                if (radioView != null && radioView instanceof GpuImgRadioButton) {
-                    final GpuImgRadioButton girBtn = (GpuImgRadioButton) radioView;
+                if (radioView != null && radioView instanceof GpuImgSurfaceRadioButton) {
+                    final GpuImgSurfaceRadioButton girBtn = (GpuImgSurfaceRadioButton) radioView;
+//                    Uri gpuImgUri = girBtn.getGpuImgUri();
+//                    if (gpuImgUri != null) {
+//                        Loger.d("GpuImg--", "previewUri" + " == " + gpuImgUri.toString());
+//                    }
                     gpuImgFilterChanged(girBtn.getFilter());
 
                     mFilterName = girBtn.getFilterName();
@@ -169,16 +187,5 @@ public class GpuImgRadioGroup extends RadioViewGroup {
             }
         });
     }
-
-
-    public void onDestroy(){
-        for (int i = 0; i < getChildCount(); i++) {
-            View view = getChildAt(i);
-            if(view instanceof GpuImgRadioButton){
-                ((GpuImgRadioButton) view).onDestroy();
-            }
-        }
-    }
-
 
 }

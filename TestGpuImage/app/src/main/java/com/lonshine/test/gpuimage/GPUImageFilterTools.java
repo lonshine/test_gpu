@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lonshine.test.gpuimage;
+package cn.app.meiya.test.gpuimage;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,9 +22,11 @@ import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 
+import com.meiyaapp.meiya.R;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import jp.co.cyberagent.android.gpuimage.GPUImage3x3ConvolutionFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImage3x3TextureSamplingFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageAddBlendFilter;
@@ -376,7 +378,7 @@ public class GPUImageFilterTools {
     private static GPUImageFilter createBlendFilter(Context context, Class<? extends GPUImageTwoInputFilter> filterClass) {
         try {
             GPUImageTwoInputFilter filter = filterClass.newInstance();
-            filter.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.gpu_ic_launcher));
+            filter.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
             return filter;
         } catch (Exception e) {
             e.printStackTrace();
@@ -473,12 +475,9 @@ public class GPUImageFilterTools {
                 adjuster = new BilateralAdjuster().filter(filter);
 
                 //新增
-            } else if (filter instanceof GPUImageFilterGroup) {
-                adjuster = new GroupAdjuster().filter(filter);
             } else if (filter instanceof GPUImageAlphaBlendFilter) {
                 adjuster = new AlphaBlendAdjuster().filter(filter);
-            }
-            else {
+            }else {
 
                 adjuster = null;
             }
@@ -745,19 +744,7 @@ public class GPUImageFilterTools {
         private class AlphaBlendAdjuster extends Adjuster<GPUImageAlphaBlendFilter> {
             @Override
             public void adjust(final int percentage) {
-                getFilter().setMix(range(percentage, 0.0f, 0.7f));
-            }
-        }
-
-
-
-        private class GroupAdjuster extends Adjuster<GPUImageFilterGroup> {
-            @Override
-            public void adjust(final int percentage) {
-                GPUImageFilter gpuImageFilter = getFilter().getFilters().get(getFilter().getFilters().size() - 1);
-                if(gpuImageFilter instanceof GPUImageAlphaBlendFilter){
-                    ((GPUImageAlphaBlendFilter)gpuImageFilter).setMix(range(percentage, 0.0f, 1.0f));
-                }
+                getFilter().setMix(range(percentage, 0.0f, 1f));
             }
         }
 

@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package com.lonshine.test.gpuimage.utils;
+package cn.app.meiya.test.gpuimage.utils;
 
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
-
-import com.lonshine.test.gpuimage.utils.CameraHelper;
 
 public class CameraHelperGB implements CameraHelper.CameraHelperImpl {
 
