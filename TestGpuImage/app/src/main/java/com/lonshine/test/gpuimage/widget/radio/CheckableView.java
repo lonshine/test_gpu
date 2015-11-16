@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget.radio;
+package com.lonshine.test.gpuimage.widget.radio;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
-import com.meiyaapp.meiya.R;
+import com.lonshine.test.gpuimage.R;
+
 
 /**
  * 复选Layout

@@ -35,18 +35,17 @@
         android:theme="@style/AppTheme" >
 
         <!-- 滤镜调试 -->
-        <activity android:name=".activity.ActivityMain" >
+        <activity android:name="com.lonshine.test.gpuimage.activity.ActivityMain" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityGallery" />
-        <activity android:name=".activity.ActivityTest" />
-        <activity android:name=".activity.ActivitySurfaceTest" />
+        <activity android:name="com.lonshine.test.gpuimage.activity.ActivityGallery" />
+        <activity android:name="com.lonshine.test.gpuimage.activity.ActivityTest" />
         <activity
-            android:name=".activity.ActivityCamera"
+            android:name="com.lonshine.test.gpuimage.activity.ActivityCamera"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>

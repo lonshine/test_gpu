@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.utils;
+package com.lonshine.test.gpuimage.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;

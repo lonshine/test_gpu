@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,7 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.meiyaapp.meiya.R;
+import com.lonshine.test.gpuimage.R;
+
 
 /**
  * 调整滤镜强度的菜单

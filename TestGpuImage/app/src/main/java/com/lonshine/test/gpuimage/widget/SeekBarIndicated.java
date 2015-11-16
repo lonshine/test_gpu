@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,7 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.meiyaapp.meiya.R;
+import com.lonshine.test.gpuimage.R;
+
 
 /**
  * 带进度文字滑块的seekbar。

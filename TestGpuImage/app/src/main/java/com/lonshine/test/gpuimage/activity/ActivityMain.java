@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.app.meiya.test.gpuimage.activity;
+package com.lonshine.test.gpuimage.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +22,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.meiyaapp.meiya.R;
+import com.lonshine.test.gpuimage.R;
+
 
 public class ActivityMain extends Activity implements OnClickListener {
 
@@ -52,7 +53,6 @@ public class ActivityMain extends Activity implements OnClickListener {
 
 
             case R.id.button_test_surface:
-                startActivity(ActivitySurfaceTest.class);
                 break;
 
             default:

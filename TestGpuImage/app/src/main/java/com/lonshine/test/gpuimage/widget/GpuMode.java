@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 /**
  * 滤镜类型
@@ -19,11 +19,11 @@ public final class GpuMode {
     public final static int LOOKUP = 0x20;
     public final static int CUSTOME = 0x21;
 
-    public final static int LOOKUP_FOCAL = 0x32;
+    public final static int LOOKUP_COLD = 0x32;
     public final static int LOOKUP_FUJICOLOR = 0x33;
     public final static int LOOKUP_INDUSTRIAL = 0x34;
-    public final static int LOOKUP_LOMO = 0x35;
-    public final static int LOOKUP_MOONRISE = 0x36;
-    public final static int LOOKUP_SUPRA = 0x37;
-
+    public final static int LOOKUP_JAPANESE = 0x35;
+    public final static int LOOKUP_LIGHT = 0x36;
+    public final static int LOOKUP_LOMO = 0x37;
+    public final static int LOOKUP_SUPRA = 0x38;
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.app.meiya.test.gpuimage;
+package com.lonshine.test.gpuimage;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,7 +22,6 @@ import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 
-import com.meiyaapp.meiya.R;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -378,7 +377,7 @@ public class GPUImageFilterTools {
     private static GPUImageFilter createBlendFilter(Context context, Class<? extends GPUImageTwoInputFilter> filterClass) {
         try {
             GPUImageTwoInputFilter filter = filterClass.newInstance();
-            filter.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
+            filter.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.gpu_ic_launcher));
             return filter;
         } catch (Exception e) {
             e.printStackTrace();

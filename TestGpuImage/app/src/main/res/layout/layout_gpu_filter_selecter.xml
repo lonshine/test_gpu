@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.lonshine.test.gpuimage.widget.GpuImgRadioGroup
+            android:id="@+id/girgGpuFilters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:scrollbars="none"
+            android:orientation="horizontal">
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                cv:cv_ischecked="true"
+                cv:grb_filter_mode="unfilter"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_supra"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_industrial"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_lomo"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_fujicolor"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_light"
+                />
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_cold"
+                />
+
+
+            <com.lonshine.test.gpuimage.widget.GpuImgRadioButton
+                android:id="@+id/girBtn9"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@+id/cvTest"
+                cv:cv_ischecked="false"
+                cv:grb_filter_mode="lookup_japanese"
+                />
+
+        </com.lonshine.test.gpuimage.widget.GpuImgRadioGroup>
+
+
+    </HorizontalScrollView>
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,9 +7,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
 
-import cn.app.meiya.test.gpuimage.utils.GpuHelper;
-import cn.app.meiya.test.gpuimage.widget.radio.RadioView;
-import cn.app.meiya.test.gpuimage.widget.radio.RadioViewGroup;
+import com.lonshine.test.gpuimage.utils.GpuHelper;
+import com.lonshine.test.gpuimage.widget.radio.RadioView;
+import com.lonshine.test.gpuimage.widget.radio.RadioViewGroup;
+
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 
 /**

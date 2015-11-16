@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,27 +7,20 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.meiyaapp.meiya.APP;
-import com.meiyaapp.meiya.R;
-import com.meiyaapp.meiya.share.weibo.util.BitmapUtils;
-import com.meiyaapp.meiya.ui.image.loader.glide.SafeGlide;
+import com.lonshine.test.gpuimage.R;
+import com.lonshine.test.gpuimage.utils.UriUtils;
+import com.lonshine.test.gpuimage.widget.radio.RadioView;
 
 import java.io.File;
 
-import cn.app.meiya.aa.util.Loger;
-import cn.app.meiya.aa.util.TextUtil;
-import cn.app.meiya.test.gpuimage.utils.UriUtils;
-import cn.app.meiya.test.gpuimage.widget.radio.RadioView;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageColorInvertFilter;
@@ -40,7 +33,6 @@ import jp.co.cyberagent.android.gpuimage.GPUImageLookupFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageSharpenFilter;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
 /**
@@ -89,11 +81,11 @@ public class GpuImgRadioButton extends RadioView {
     }
 
     @Override
-    public void initView(Context context,AttributeSet attrs) {
+    public void initView(Context context, AttributeSet attrs) {
         init(context, attrs);
     }
 
-    private void init(Context context,AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs) {
         View view = LayoutInflater.from(context).inflate(R.layout.view_gpuimg_radio_btn, this, true);
         findView(view);
         getAttrs(context, attrs);
@@ -103,14 +95,14 @@ public class GpuImgRadioButton extends RadioView {
     }
 
 
-    private void getAttrs(Context context,AttributeSet attrs) {
+    private void getAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GpuImgRadioButton, 0, 0);
 
-        if(typedArray.hasValue(R.styleable.GpuImgRadioButton_grb_filter_mode)){
-            mFilterMode = typedArray.getInt(R.styleable.GpuImgRadioButton_grb_filter_mode,GpuMode.NULL);
+        if (typedArray.hasValue(R.styleable.GpuImgRadioButton_grb_filter_mode)) {
+            mFilterMode = typedArray.getInt(R.styleable.GpuImgRadioButton_grb_filter_mode, GpuMode.NULL);
         }
 
-        if(typedArray.hasValue(R.styleable.GpuImgRadioButton_grb_filter_name)){
+        if (typedArray.hasValue(R.styleable.GpuImgRadioButton_grb_filter_name)) {
             mFilterName = typedArray.getString(R.styleable.GpuImgRadioButton_grb_filter_name);
         }
 
@@ -132,9 +124,9 @@ public class GpuImgRadioButton extends RadioView {
     }
 
     private void setupFilter() {
-        switch (mFilterMode){
+        switch (mFilterMode) {
             case GpuMode.CONTRAST:
-                mFilter = new GPUImageContrastFilter(range(75,0,2));
+                mFilter = new GPUImageContrastFilter(range(75, 0, 2));
                 setFilterName("对比度");
                 break;
 
@@ -145,31 +137,31 @@ public class GpuImgRadioButton extends RadioView {
 
             case GpuMode.PIXELATION:
                 mFilter = new GPUImagePixelationFilter();
-                ((GPUImagePixelationFilter)mFilter).setPixel(range(20,1,100));
+                ((GPUImagePixelationFilter) mFilter).setPixel(range(20, 1, 100));
                 setFilterName("像素");
                 break;
 
             case GpuMode.HUE:
                 mFilter = new GPUImageHueFilter();
-                ((GPUImageHueFilter)mFilter).setHue(range(30, 0, 360));
+                ((GPUImageHueFilter) mFilter).setHue(range(30, 0, 360));
                 setFilterName("色度");
                 break;
 
             case GpuMode.GAMMA:
                 mFilter = new GPUImageGammaFilter();
-                ((GPUImageGammaFilter)mFilter).setGamma(range(80, 0, 3));
+                ((GPUImageGammaFilter) mFilter).setGamma(range(80, 0, 3));
                 setFilterName("伽马线");
                 break;
 
             case GpuMode.BRIGHTNESS:
                 mFilter = new GPUImageBrightnessFilter();
-                ((GPUImageBrightnessFilter)mFilter).setBrightness(range(65, -1, 1));
+                ((GPUImageBrightnessFilter) mFilter).setBrightness(range(65, -1, 1));
                 setFilterName("亮度");
                 break;
 
             case GpuMode.SEPIA:
                 mFilter = new GPUImageSepiaFilter();
-                ((GPUImageSepiaFilter)mFilter).setIntensity(range(20, 0, 2));
+                ((GPUImageSepiaFilter) mFilter).setIntensity(range(20, 0, 2));
                 setFilterName("怀旧");
                 break;
 
@@ -180,56 +172,62 @@ public class GpuImgRadioButton extends RadioView {
 
             case GpuMode.SHARPNESS:
                 mFilter = new GPUImageSharpenFilter();
-                ((GPUImageSharpenFilter)mFilter).setSharpness(range(20,-4,4));
+                ((GPUImageSharpenFilter) mFilter).setSharpness(range(20, -4, 4));
                 setFilterName("锐化");
                 break;
 
 
             case GpuMode.LOOKUP:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_lookup_amatorka));
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_lookup_amatorka));
                 setFilterName("自定义");
                 break;
 
-
-
-            case GpuMode.LOOKUP_FOCAL:
+            case GpuMode.LOOKUP_COLD:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_2_focal));
-                setFilterName("Focal");
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_cold));
+                setFilterName("冷调");
                 break;
 
             case GpuMode.LOOKUP_FUJICOLOR:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_3_fujicolor));
-                setFilterName("Fujicolor");
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_fujicolor));
+                setFilterName("富士胶片");
                 break;
 
             case GpuMode.LOOKUP_INDUSTRIAL:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_4_industrial));
-                setFilterName("Industrial");
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_industrial));
+                setFilterName("明亮");
                 break;
 
             case GpuMode.LOOKUP_LOMO:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_5_lomo));
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_lomo));
                 setFilterName("Lomo");
                 break;
 
 
-            case GpuMode.LOOKUP_MOONRISE:
+            case GpuMode.LOOKUP_LIGHT:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_6_moonrise));
-                setFilterName("Moonrise");
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_light));
+                setFilterName("柔光");
                 break;
 
 
             case GpuMode.LOOKUP_SUPRA:
                 mFilter = new GPUImageLookupFilter();
-                ((GPUImageLookupFilter)mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_7_supra));
-                setFilterName("Supra");
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_supra));
+                setFilterName("暖调");
                 break;
+
+
+            case GpuMode.LOOKUP_JAPANESE:
+                mFilter = new GPUImageLookupFilter();
+                ((GPUImageLookupFilter) mFilter).setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.gpu_japanese));
+                setFilterName("日系");
+                break;
+
 
             default:
                 mFilter = null;
@@ -238,17 +236,17 @@ public class GpuImgRadioButton extends RadioView {
         }
     }
 
-    private void setFilterName(String name){
-        if(TextUtil.isEmptyOrNull(mFilterName)){
+    private void setFilterName(String name) {
+        if (TextUtils.isEmpty(mFilterName)) {
             mFilterName = name;
         }
     }
 
     private void setSelectedTag() {
         //原图不可点击弹出菜单，同时不显示中间图标
-        if(mFilter == null){
+        if (mFilter == null) {
             ivGrbTagCenter.setVisibility(View.GONE);
-        }else{
+        } else {
             vGrbTag.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -267,13 +265,13 @@ public class GpuImgRadioButton extends RadioView {
     }
 
     private void setName() {
-        if(!TextUtil.isEmptyOrNull(mFilterName)){
+        if (!TextUtils.isEmpty(mFilterName)) {
             tvGrbName.setText(mFilterName);
         }
     }
 
 
-    public String getFilterName(){
+    public String getFilterName() {
         return mFilterName + "";
     }
 
@@ -289,16 +287,15 @@ public class GpuImgRadioButton extends RadioView {
     }
 
 
-
-    public void setImage(String path){
-        if(!path.startsWith("content://") && new File(path).exists()){
+    public void setImage(String path) {
+        if (!path.startsWith("content://") && new File(path).exists()) {
             mUri = Uri.fromFile(new File(path));
-        }else{
+        } else {
             mUri = Uri.parse(path);
         }
 
 
-        if(mState == STATE_UN_LOAD){
+        if (mState == STATE_UN_LOAD) {
             String realPath = UriUtils.getRealFilePath(getContext(), mUri);
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 4;
@@ -331,22 +328,22 @@ public class GpuImgRadioButton extends RadioView {
     }
 
     private void setCheckTagView() {
-        if(isChecked()){
+        if (isChecked()) {
             vGrbTag.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             vGrbTag.setVisibility(View.INVISIBLE);
         }
     }
 
     private void loadGpuImage() {
-        if(mBitmap == null){
-            Loger.d("GpuImg -- updateSelectedGpuImage", "mBitmap == null");
+        if (mBitmap == null) {
+            Log.d("GpuImg -- updateSelectedGpuImage", "mBitmap == null");
             return;
         }
 
-            mState = STATE_LOADING;
-            setLoadingView();
-            getGpuImage();
+        mState = STATE_LOADING;
+        setLoadingView();
+        getGpuImage();
 
     }
 
@@ -360,14 +357,14 @@ public class GpuImgRadioButton extends RadioView {
      */
     private void getGpuImage() {
         if (mBitmap != null) {
-            if(mFilter != null){
+            if (mFilter != null) {
                 new FilterSaveTask(new OnPictureSavedListener() {
                     @Override
                     public void onPictureSaved(Bitmap bitmap) {
                         getGpuImageCompleted();
                     }
                 }).execute();
-            }else{
+            } else {
                 //原图效果
                 getGpuImageCompleted();
             }
@@ -378,10 +375,11 @@ public class GpuImgRadioButton extends RadioView {
     /**
      * 滤镜转换和缓存
      */
-    private class FilterSaveTask extends AsyncTask<Void,Void,Void>{
+    private class FilterSaveTask extends AsyncTask<Void, Void, Void> {
 
-        private  Handler mHandler;
-        private  OnPictureSavedListener mListener;
+        private Handler mHandler;
+        private OnPictureSavedListener mListener;
+
         public FilterSaveTask(OnPictureSavedListener l) {
             mListener = l;
             mHandler = new Handler();
@@ -404,7 +402,7 @@ public class GpuImgRadioButton extends RadioView {
                 gpuImage.setFilter(mFilter);
                 mBitmap = gpuImage.getBitmapWithFilterApplied();
 
-                Loger.d("GpuImg--saveBitmap2File", "onScanCompleted" + " == " + mBitmap.toString());
+                Log.d("GpuImg--saveBitmap2File", "onScanCompleted" + " == " + mBitmap.toString());
                 if (mListener != null) {
                     mHandler.post(new Runnable() {
                         @Override
@@ -423,21 +421,20 @@ public class GpuImgRadioButton extends RadioView {
     }
 
     private void getGpuImageCompleted() {
-        if(mBitmap == null){
-            Loger.d("GpuImg", "getGpuImageCompleted" + ":  mBitmap = null");
+        if (mBitmap == null) {
+            Log.d("GpuImg", "getGpuImageCompleted" + ":  mBitmap = null");
             return;
         }
 
         mState = STATE_LOADED;
 
-        byte[] bytes = BitmapUtils.Bitmap2Bytes(mBitmap);
-        displayGpuPreview(bytes, ivGrbImg);
+        ivGrbImg.setImageBitmap(mBitmap);
 
         updateSelectedGpuImage();
 
         //通知父布局
-        if(getParent() instanceof GpuImgRadioGroup) {
-            ((GpuImgRadioGroup)getParent()).childGpuImageFillterCompleted(isChecked(),mFilter);
+        if (getParent() instanceof GpuImgRadioGroup) {
+            ((GpuImgRadioGroup) getParent()).childGpuImageFillterCompleted(isChecked(), mFilter);
         }
 
         mBitmap.recycle();
@@ -449,42 +446,28 @@ public class GpuImgRadioButton extends RadioView {
 
 
     /**
-     * 使用glide显示预览图
-     * @param bytes
-     * @param view
-     */
-    public void displayGpuPreview(byte[] bytes, ImageView view) {
-        BitmapPool pool = Glide.get(APP.getInstance()).getBitmapPool();
-        RequestManager mGlide = SafeGlide.with(getContext());
-        mGlide.load(bytes)
-                .bitmapTransform(new CropCircleTransformation(pool))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(view);
-    }
-
-
-    /**
      * 原图的uri
+     *
      * @return
      */
-    public Uri getUri(){
+    public Uri getUri() {
         return mUri;
     }
 
 
-    public GPUImageFilter getFilter(){
+    public GPUImageFilter getFilter() {
         return mFilter;
     }
 
 
-    public void onDestroy(){
-        if(mBitmap != null){
+    public void onDestroy() {
+        if (mBitmap != null) {
             mBitmap.recycle();
             mBitmap = null;
         }
         if (mFilter != null) {
-            if(mFilter instanceof GPUImageLookupFilter){
-                ((GPUImageLookupFilter)mFilter).recycleBitmap();
+            if (mFilter instanceof GPUImageLookupFilter) {
+                ((GPUImageLookupFilter) mFilter).recycleBitmap();
             }
             mFilter.onDestroy();
             mFilter = null;

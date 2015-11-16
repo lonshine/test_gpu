@@ -1,4 +1,4 @@
-package cn.app.meiya.test.gpuimage.widget;
+package com.lonshine.test.gpuimage.widget;
 
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 

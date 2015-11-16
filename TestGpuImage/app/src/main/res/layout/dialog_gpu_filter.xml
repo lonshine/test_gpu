@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e5000000"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layoutGpuDialog">
+
+
+
+        <View
+            android:id="@+id/vEmptyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <com.lonshine.test.gpuimage.widget.SeekBarIndicated
+                android:id="@+id/siFilterProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                app:indicator_text_point_mode="true"
+                app:seekbar_marginLeft="8dp"
+                app:seekbar_marginRight="8dp"
+                app:seekbar_marginTop="8dp"
+                app:indicator_textSize="10sp"
+                app:seekbar_show_range_value="false"
+                ></com.lonshine.test.gpuimage.widget.SeekBarIndicated>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <ImageView
+                android:id="@+id/ivCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:padding="27dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/gpu_ic_launcher"/>
+
+
+            <TextView
+                android:id="@+id/tvFilterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="27dp"
+                android:paddingTop="27dp"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="#99000000"
+                android:textSize="16sp"/>
+
+
+            <ImageView
+                android:id="@+id/ivChecked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:padding="27dp"
+                android:src="@drawable/gpu_ic_launcher"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
